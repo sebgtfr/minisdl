@@ -1,0 +1,242 @@
+Guide de la minisdl en cpp :
+
+SOMMAIRE:
+
+	1) Initialisation de l'ecran.
+	2) Mettre un pixel sur l'ecran.
+	3) Gestion des évènements.
+	4) Exemple de code I . Ecran et évènements
+	5) Image
+
+
+1) Initialisation de l'ecran.
+
+
+msdl::Screen est un objet représentant l'écran dans l'espace de nom msdl.
+Il nous faut donc initialisé cette objet comme ceci :
+
+{
+	msdl::Screen	screen;
+
+	ou
+
+	msdl::Screen	*screen;
+
+	screen = new msdl::Screen();
+}
+
+Ensuite pour initialisé la SDL. Utilisé la Methode de msdl::Screen::init comme ceci :
+
+{
+	screen.init();
+}
+
+par defaut, cette fonction initialise la sdl sans option avec un ecran de taille
+720x480 et comme nom de fenêtre "Minisdl Project !".
+
+vous pouvez donner ces élément en paramètre de la methode comme ceci
+(Différents Exemples)
+
+{
+	screen.init(ALL_OFF, 1280, 720, "My Project Perso");
+
+	ou
+
+	screen.init(FULLSCREEN_ON);
+
+	ou
+
+	screen.init(FULLSCREEN_ON, 0, 0, "My title");
+
+	ou
+
+	screen.init(RESIZE_ON | AUDIO_ON, 1200);
+
+	ou
+
+	screen.init(RESIZE_AUDIO_ON, 1200);
+}
+
+Les macros du premier paramètre se trouve dans "msdl_macro.h".
+
+
+2) Mettre un pixel sur l'ecran.
+
+
+Pour mettre un pixel sur l'ecran, il faut utilisé la methode put_pixel
+On l'utilise comme ceci :
+
+{
+	screen.put_pixel(400, 200);
+
+	ou
+
+	screen.put_pixel(400, 200, 0xFFFFFF);
+}
+
+Par defaut, le pixel placer est blanc.
+
+ensuite, il faut mettre à jour l'écran avec la methode update
+
+{
+	screen.update();
+}
+
+VOIR msdl_screen.man
+
+
+3) Gestion des évènements.
+
+
+Pour géré les évènements, il faut déclarer un type t_msdl_event puis,
+il faut l'initialisé avec la fonction msdl_init_event()
+
+{
+	msdl::t_event	event;
+
+	msdl::init_event(&event);
+}
+
+ensuite on utilise les fonctions suivante pour remplir les fonction d'evènement.
+
+msdl_set_key_event(), msdl_set_mouse_event(), msdl_set_motion_event(),
+msdl_set_fct_loop_event(), msdl_set_ogl_event()
+
+Ces fonctions doivent retouné (true). si elle retourne (false), on quitte la boucle
+des évènements.
+
+Exemple key_event
+
+{
+	bool	keypress(msdl::Screen &screen, SDLKey keycode, SDLMod mode, void *param)
+	{
+		//code
+		return (true);
+	}
+
+	bool	keyrelease(msdl::Screen &screen, SDLKey keycode, SDLMod mode, void *param)
+	{
+		//code
+		return (true);
+	}
+
+	int	main(void)
+	{
+		...
+		msdl::set_key_event(&event, keypress, keyrelease);
+	}
+}
+
+Exemple mouse_event
+
+{
+	bool	mousepress(msdl::Screen &screen, Uint8 button, Uint16 *pos, void *param)
+	{
+		//code
+		return (true);
+	}
+
+	bool	mousemotion(msdl::Screen &screen, Uint16 x, Uint16 y, void *param)
+	{
+		//code
+		return (true);
+	}
+
+	int	main(void)
+	{
+		...
+		msdl::set_mouse_event(&event, mousepress, NULL, mousemotion);
+		// on peut mettre une fonction mouserelease au lieu de NULL
+	}
+}
+
+etc...
+
+enfin, on lance la boucle des évènements avec la fonction :
+
+{
+	msdl::event_loop(&event, screen);
+
+	ou
+
+	msdl::event_loop(&event, screen, &param);
+
+	// param est un pointeur vers une structure ou une variable.
+}
+
+
+4) Exemple de code I . Ecran et évènements
+
+
+<--------------------------------------------------------------------------------->
+
+#include "minisdl.h"
+#include <stdlib.h>
+
+bool	key_press(msdl::Screen &screen, SLDKey keycode, SDLMod mode, void *param)
+{
+	if (keycode == SDLK_ESCAPE)
+		return (false);
+	return (true);
+}
+
+int			main(void)
+{
+	msdl::Screen	screen;
+	msdl::t_event	event;
+
+	if (!(screen.init(ALL_OFF, 500, 500, "Exemple 1 de la minisdl")))
+		return (EXIT_FAILURE);
+	screen.put_pixel(250, 250);
+	screen.update();
+	msdl::init_event(&event);
+	msd::set_key_event(&event, key_press, NULL);
+	msd::event_loop(&event, screen);
+}
+
+<--------------------------------------------------------------------------------->
+
+
+5) Image
+
+
+Il existe une classe pour représenté l'image. On le declare ainsi :
+
+{
+	msdl::Image	image;
+}
+
+2 cas se présentent :
+
+I) Surface Uni :
+
+on l'initialise ainsi :
+
+{
+	image.init(500, 500);
+
+	ou
+
+	image.init(500, 500, 0xFFFFFF);
+}
+
+II) Image chargé.
+
+on l'initialise ainsi :
+
+{
+	image.init("image.png");
+}
+
+On peut mettre un pixel comme avec l'ecran avec une methode put_pixel.
+
+Enfin, pour afficher l'image, on doit la copier dans l'écran. On utilise une methode
+de l'écran : blit.
+
+On l'emploi comme ceci :
+
+{
+	screen.blit(image);
+}
+
+VOIR msdl_screen et msdl_image.man

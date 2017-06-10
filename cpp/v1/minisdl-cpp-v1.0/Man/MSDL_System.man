@@ -1,0 +1,44 @@
+MINISDL-CPP V1.0
+#################################### SYSTEM ####################################
+
+OBJECT => MSDL::System
+
+### CONSTRUTOR
+
+- System();
+
+- System(MSDL::System::Flags flagsSystem);
+
+### METHODS:
+
+void				init(MSDL::System::Flags flagsSystem);
+
+=> Initialize flags systems only if doesn't init.
+
+void				close(MSDL::System::Flags flagsSystem);
+
+=> Close flags system only if already init.
+
+### SUBOBJECT
+
+- System::Flags is enumeration of system's options
+
+	=> MSDL::System::ALL_OFF = No subsystem on.
+
+	=> MSDL::System::TIMER = Activate timer's subsystem.
+
+	=> MSDL::System::AUDIO = Activate audio's subsystem.
+
+	=> MSDL::System::ALL_ON = Activate all previously subsystems.
+
+By default, Video subsystem is always activated.
+
+### MACROS
+
+	=> MSDL_AUDIO_FREQUENCY : By default, this macro's data is (44100).
+				  You can change macro's data if you
+				  define this macro with other value before
+				  including header of library. This value
+				  must be a number.
+
+################################################################################

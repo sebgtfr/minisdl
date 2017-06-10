@@ -1,0 +1,69 @@
+msdl::Screen est la classe représentant l'ecran de la SDL.
+C'est cette classe qui initialise et detruit la SDL.
+Voici ces Méthodes :
+
+// Initialisation de l'objet
+
+bool	init();
+bool	init(const char opt);
+bool	init(const char opt, const Uint16 width);
+bool	init(const char opt, const Uint16 width, const Uint16 height);
+bool	init(const char opt, const Uint16 width,
+	     const Uint16 height, std::string title);
+
+* opt est un flag informant comment initialisé la SDL, (void msdl_macro.h)
+** Retourne "true" si succès
+
+
+// Mettre un icone sur la fenêtre
+
+void	set_icon(msdl::Image &icon);
+
+
+// Mettre un pixel sur l'ecran
+
+void	put_pixel(const Uint16 x, const Uint16 y);
+void	put_pixel(const Uint16 x, const Uint16 y, const Uint32 color);
+
+
+// Récupérer la couleur d'un pixel sur l'écran
+
+Uint32		get_pixel(const Uint16 x, const Uint16 y) const;
+
+
+// Mettre à jour l'affichage de l'écran
+
+void		update(void) const;
+
+
+// Nettoyer l'ecran .
+
+bool		clear();
+bool		clear(Uint32 color);
+
+* Retourne "true" si succès
+
+
+// Copier une image sur l'ecran
+
+void		blit(msdl::Image &image);
+void		blit(msdl::Image &image, const Uint16 x);
+void		blit(msdl::Image &image, const Uint16 x, const Uint16 y);
+void		blit(msdl::Image &image, const Uint16 x,
+		const Uint16 y, SDL_Rect *rect_src);
+
+// Récupérer la longueur de l'image
+
+Uint32		width(void) const;
+
+// Récupérer la largeur de l'image
+
+Uint32		height(void) const;
+
+// Switch l'ecran en mode fenêtre / plein écran
+
+bool		switch_fullscreen(void);
+
+// Permet de bloquer ou débloquer la posibilité de changer la taille de la fenêtre.
+
+bool		switch_resize(void);

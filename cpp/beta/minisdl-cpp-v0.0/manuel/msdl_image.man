@@ -1,0 +1,54 @@
+msdl::Image est la classe représentant une image en SDL.
+Cette classe est soit une surface uni ou soit une image chargé.
+Voici ces Méthodes :
+
+// Initialisation de l'objet
+
+$-> Surface uni
+
+bool	init(const Uint16 width, const Uint16 height);
+bool	init(const Uint16 width, const Uint16 height, const Uint32 color);
+
+$-> image chargé
+
+bool	init(const char *image_name);
+
+** Retourne "true" si succès
+
+// Mettre un pixel sur l'ecran
+
+void	put_pixel(const Uint16 x, const Uint16 y);
+void	put_pixel(const Uint16 x, const Uint16 y, const Uint32 color);
+
+
+// Récupérer la couleur d'un pixel sur l'écran
+
+Uint32		get_pixel(const Uint16 x, const Uint16 y) const;
+
+
+// Récupérer la longueur de l'image
+
+Uint32		width(void) const;
+
+
+// Récupérer la largeur de l'image
+
+Uint32		height(void) const;
+
+
+// Applique la transparence sur une couleur
+
+bool		transparency_color(Uint32 color);
+
+
+// Applique la transparence alpha sur une image
+
+bool		transparency_alpha(Uint8 alpha);
+
+// Copier une image sur l'image
+
+void		blit(msdl::Image &image);
+void		blit(msdl::Image &image, const Uint16 x);
+void		blit(msdl::Image &image, const Uint16 x, const Uint16 y);
+void		blit(msdl::Image &image, const Uint16 x,
+		const Uint16 y, SDL_Rect *rect_src);

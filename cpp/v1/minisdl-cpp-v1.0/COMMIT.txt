@@ -1,0 +1,72 @@
+#################################### COMMIT ####################################
+
+=> Tuesday, May 31 : 9h P.M
+
+   -> Create class "System" to init and delete subsystem of SDL
+   -> Create class "Exception" to manage exception.
+   -> Create class "InitError" to inherit Exception to manage errors of
+      initialization of system.
+
+=> Wednesday, June 1 : 9h50 A.M
+
+   -> Delete Class "InitError" and create msg_error array with enum for index.
+   -> Add "INIT_SYSTEM" error message.
+
+=> Saturday, June 4 : 00h07 A.M
+
+   -> Add Begining of class "Surface" with getPixel and putPixel Methods
+      (need to check with all endian and bpp)
+   -> Add union class "Pixel" with constructor ou operator= and operator[] for
+      All int size formats signed and unsigned.
+   -> Add "PIXEL_COMPONANT_OUT_RANGE" error with associate error message.
+   -> Add "NO_SDL_ERROR" value on "Exception" for no add SDL_GetError message.
+   -> Management off Endianess with preprocessor
+
+=> Saturday, June 4 : 11h05 A.M
+
+   -> Add all arithmetic, logical and comparison operator on "Pixel" class with
+      all int type and "Pixel".
+
+=> Saturday, June 18 : 23h37 P.M
+
+   -> Add automatic management of number's code error with std::ostingstream
+      and <iomanip> objects.
+   -> Add default ctor to Pixel class.
+   -> Add Activation Audio on System
+   -> Custom Flags system selection.
+   -> Add "LAST_SDL" code_error to make more easy addon of new code error
+   -> Add "INIT_AUDIO_SYSTEM" error with message.
+   -> Add libSDL[...].so en SDL[...].h on SDL directory and compile with it.
+   -> Organize file's sources ad include in several different directory.
+
+=> Thursday, June 30 : 01h45 A.M
+
+   -> On Surface, add methods "clear", "width", "height", "GetSurface", "blit"
+      + Rect SubObject (need make methods to init Rect from Surface)
+   -> Create object "Window", with methods "update" and "reverseFlags".
+
+=> Wednesday, July 6 : 07h50 P.M
+
+   -> Add automatic management of square on "Rect" class.
+   -> Add Colors' macros
+   -> Custom management of "Window" and "System" flags
+
+=> Thursday, July 21 : 1h56 P.M
+
+   -> Create first version of man : (only man MSDL::System).
+
+=> Wednesday, August 17 : 6h15 P.M
+
+   -> Create "MSDL::Image" item, first check blit (look good with surface).
+      Need check with real image (.bmp, .png, .jpg).
+   -> Add setIcon to "MSDL::Window" (no already check).
+   -> Add Error to both image initialisation's methods.
+
+=> Wednesday, August 24 : 2h15 P.M
+
+   -> Add Methods setTransparency and setAlpha to MSDL::Image.
+   -> Add Error to both new image's methods.
+   -> Check Loading of .jpg format (Works !)
+   -> Check blit of this image.jpg with locate [MSDL::Surface::Rect] (Works !)
+
+################################################################################

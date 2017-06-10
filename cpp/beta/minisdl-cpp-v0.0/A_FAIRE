@@ -1,0 +1,3 @@
+- recré surface avec SDL_DisplayFormat
+- Crée un printf pour le font.
+- Crée la miniopengl
