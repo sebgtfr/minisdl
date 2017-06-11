@@ -5,14 +5,14 @@
 // Login   <le-mai_s@epitech.net>
 //
 // Started on  Tue May 31 19:17:00 2016 Sébastien Le Maire
-// Last update Sat Jun 10 15:00:57 2017 Sébastien Le Maire
+// Last update Sun Jun 11 12:03:29 2017 Sébastien Le Maire
 //
 
-#include <SDL2/SDL.h>
+#include "SDL2/SDL.h"
 #include <sstream>
 #include <iomanip>
 #include <string>
-#include "Minisdl2/Exception.hpp"
+#include "MSDL2/Exception.hpp"
 
 static std::string const	g_msg_error[MSDL::Exception::LAST] =
   {

@@ -5,7 +5,7 @@
 ## Login   <le-mai_s@epitech.net>
 ## 
 ## Started on  Sat Jun 10 12:03:44 2017 Sébastien Le Maire
-## Last update Sat Jun 10 17:41:15 2017 Sébastien Le Maire
+## Last update Sun Jun 11 12:04:48 2017 Sébastien Le Maire
 ##
 
 CXXFLAGS			=
@@ -16,18 +16,18 @@ CXXFLAGS			+= -g -g3 -ggdb
 
 endif
 
-export LD_LIBRARY_PATH		= ${PWD}/SDL/lib/
+#export LD_LIBRARY_PATH		= ${PWD}/lib/SDL2/
 
 PATH_RELEASE			= ./
 PATH_SRCS			= ./srcs/
 PATH_INCLUDE			= ./include/
-PATH_SDL_INCLUDE		= ./SDL/include/
 
 NAME				= ${PATH_RELEASE}libmsdl2.a
 
 CXXFLAGS			+= -Wall -Wextra -Werror
-CXXFLAGS			+= -I${PATH_SDL_INCLUDE}
 CXXFLAGS			+= -I${PATH_INCLUDE}
+
+LDFLAGS				= -L./lib/SDL2/
 
 # System sources
 SRCS				= $(PATH_SRCS)System.cpp

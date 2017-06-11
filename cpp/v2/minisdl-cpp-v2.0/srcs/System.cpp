@@ -5,12 +5,13 @@
 // Login   <le-mai_s@epitech.net>
 //
 // Started on  Sat Jun 10 12:17:48 2017 Sébastien Le Maire
-// Last update Sat Jun 10 17:23:54 2017 Sébastien Le Maire
+// Last update Sun Jun 11 12:03:40 2017 Sébastien Le Maire
 //
 
-#include "SDL_mixer.h"
-#include "Minisdl2/Exception.hpp"
-#include "Minisdl2/System.hpp"
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_mixer.h"
+#include "MSDL2/Exception.hpp"
+#include "MSDL2/System.hpp"
 
 MSDL::System::Module		operator|(MSDL::System::Module const &m1,
 					  MSDL::System::Module const &m2)

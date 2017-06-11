@@ -5,13 +5,11 @@
 // Login   <le-mai_s@epitech.net>
 //
 // Started on  Sat Jun 10 12:17:43 2017 Sébastien Le Maire
-// Last update Sat Jun 10 17:23:58 2017 Sébastien Le Maire
+// Last update Sun Jun 11 11:40:28 2017 Sébastien Le Maire
 //
 
 #ifndef SYSTEM_HPP_
 # define SYSTEM_HPP_
-
-# include "SDL.h"
 
 # define __MSDL_SYSTEM_NBMODULES__	(2)
 
