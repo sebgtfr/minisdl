@@ -5,14 +5,15 @@
 // Login   <le-mai_s@epitech.net>
 //
 // Started on  Sun Jun 11 11:35:32 2017 Sébastien Le Maire
-// Last update Sun Jun 11 11:38:42 2017 Sébastien Le Maire
+// Last update Sun Jun 11 12:21:13 2017 Sébastien Le Maire
 //
 
+#include "SDL.h"
 #include "Window.hpp"
 
 namespace	MSDL
 {
-  Window::Window(void)
+  Window::Window(Uint16)
   {
   }
 
